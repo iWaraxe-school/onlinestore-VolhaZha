@@ -1,4 +1,4 @@
-package Package.Domain;
+package domain;
 
 public class Product {
    private String name;
@@ -11,4 +11,15 @@ public class Product {
       this.price = price;
    }
 
+   public String getName() {
+      return name;
+   }
+
+   public double getRate() {
+      return rate;
+   }
+
+   public double getPrice() {
+      return price;
+   }
 }

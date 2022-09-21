@@ -1,4 +1,4 @@
-package Package.Store;
+package store;
 
 public class RandomStorePopulator {
 }

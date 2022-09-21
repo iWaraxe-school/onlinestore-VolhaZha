@@ -1,6 +1,6 @@
-package Package.Domain.Categories;
+package domain.Categories;
 
-import Package.Domain.Category;
+import domain.Category;
 
 public class BikeCategory extends Category {
     private String name;
