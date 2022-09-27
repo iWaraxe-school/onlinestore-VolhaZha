@@ -1,20 +1,16 @@
 package console.app;
 
+import domain.Category;
 import domain.Product;
-import fakers.Fakers;
+import fakers.RandomCategoryGenerator;
+import fakers.RandomStorePopulator;
+import store.Store;
 
 public class StoreApp {
-    private static void outputProduct(Product product) {
-        System.out.println("Product Name: " + product.getName());
-        System.out.println("Product Rate: " + product.getRate());
-        System.out.println("Product Price:" + product.getPrice());
-    }
-
     public static void main(String[] args) {
-        Fakers fakeCreation = new Fakers();
-        Product product1 = fakeCreation.createRandomProduct();
-        outputProduct(product1);
-        Product product2 = fakeCreation.createRandomProduct();
-        outputProduct(product2);
+        Store onlineStore = new Store ();
+        RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
+        randomStorePopulator.fillStoreRandomly();
+        onlineStore.printAllCategoriesAndProducts();
     }
 }
