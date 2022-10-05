@@ -15,22 +15,15 @@ public class Category {
         return name;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
-
     public void addProduct (Product product) {
         productList.add(product);
     }
 
-    @Override
-    public String toString (){
-        String products = "";
-        for (Product product: productList){
-            String productStr = "    " + product.toString() + "\n";
-            products = products + productStr;
+    public void printProductsFromList() {
+        System.out.println("Category " + name);
+
+        for (Product product : productList) {
+            System.out.println(product);
         }
-        String categoryInfo = String.format("'%s' - Name: '%s', Product List: \n%s", getClass().getSimpleName(), name, products);
-        return categoryInfo;
     }
 }

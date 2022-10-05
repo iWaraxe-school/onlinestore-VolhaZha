@@ -1,8 +1,5 @@
 package console.app;
 
-import domain.Category;
-import domain.Product;
-import fakers.RandomCategoryGenerator;
 import fakers.RandomStorePopulator;
 import store.Store;
 
