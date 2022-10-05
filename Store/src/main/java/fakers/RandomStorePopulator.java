@@ -42,7 +42,6 @@ public class RandomStorePopulator {
             subCategorySet.add(category);
         }
         for (Category subCategory : subCategorySet) {
-            this.store.printAllCategoriesAndProducts();
             for (int i = 0; i < new Random().nextInt(10); i++) {
                 Product product = products.generateProduct(subCategory.getName());
                 subCategory.addProduct(product);
