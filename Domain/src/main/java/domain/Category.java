@@ -15,6 +15,10 @@ public class Category {
         return name;
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
+
     public void addProduct (Product product) {
         productList.add(product);
     }
