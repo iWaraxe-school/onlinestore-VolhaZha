@@ -17,4 +17,13 @@ public class Store {
             category.printProductsFromList();
         }
     }
+
+    public List<Product> getAllProducts(){
+        List<Product>listOfAllProducts = new ArrayList<>();
+        for(Category category: categoryList){
+            List<Product> productList = category.getProductList();
+            listOfAllProducts.addAll(productList);
+        }
+        return listOfAllProducts;
+    }
 }
