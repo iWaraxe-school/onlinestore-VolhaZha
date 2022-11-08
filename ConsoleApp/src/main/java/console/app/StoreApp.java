@@ -2,9 +2,8 @@ package console.app;
 
 import fakers.RandomStorePopulator;
 import store.Store;
-import xml.XMLparser;
-
-import java.util.Map;
+import xml.ProductComparator;
+import interaction.Interaction;
 
 public class StoreApp {
     public static void main(String[] args) {
@@ -13,8 +12,11 @@ public class StoreApp {
         randomStorePopulator.fillStoreRandomly();
         onlineStore.printAllCategoriesAndProducts();
 
-        XMLparser parser = new XMLparser();
-        Map<String, String> map = parser.parse();
-        System.out.println(map);
+        ProductComparator productComparator = new ProductComparator(onlineStore);
+        productComparator.sortProducts();
+        productComparator.top5();
+
+        Interaction interaction = new Interaction();
+        interaction.Interactive();
     }
 }
