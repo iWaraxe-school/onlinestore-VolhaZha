@@ -6,14 +6,6 @@ import domain.Product;
 public class RandomProductGenerator {
     private final Faker faker = new Faker();
 
-    public Product generateProduct (String categoryName){
-        return new Product(
-                generateProductName(categoryName),
-                generateProductPrice(),
-                generateProductRate()
-        );
-    }
-
     public String generateProductName(String categoryName) {
         switch (categoryName) {
             case "Book":

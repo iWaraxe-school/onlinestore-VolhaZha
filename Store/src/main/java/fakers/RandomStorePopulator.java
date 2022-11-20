@@ -2,6 +2,7 @@ package fakers;
 
 import domain.Category;
 import domain.Product;
+import domain.ProductBuilder;
 import org.reflections.Reflections;
 import store.Store;
 
@@ -41,12 +42,19 @@ public class RandomStorePopulator {
             }
             subCategorySet.add(category);
         }
+
         for (Category subCategory : subCategorySet) {
-            for (int i = 0; i < new Random().nextInt(10); i++) {
-                Product product = products.generateProduct(subCategory.getName());
+            Random random = new Random();
+            for (int i = 0; i < random.nextInt(10); i++) {
+                Product product = new ProductBuilder()
+                        .name(products.generateProductName(subCategory.getName()))
+                        .price(products.generateProductPrice())
+                        .rate(products.generateProductRate())
+                        .build();
                 subCategory.addProduct(product);
             }
-            Store.fillStore(subCategory);
+            store.fillStore(subCategory);
         }
+
     }
 }
