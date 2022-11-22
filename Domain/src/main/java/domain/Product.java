@@ -5,10 +5,10 @@ public class Product {
    private double rate;
    private double price;
 
-   public Product (String name, double rate, double price) {
-      this.name = name;
-      this.rate = rate;
-      this.price = price;
+   Product(ProductBuilder productBuilder) {
+      this.name = productBuilder.getName();
+      this.price = productBuilder.getPrice();
+      this.rate = productBuilder.getRate();
    }
 
    public String getName() {

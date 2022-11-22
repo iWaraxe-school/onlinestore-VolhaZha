@@ -6,7 +6,7 @@ import xml.ProductComparator;
 import java.util.Scanner;
 
 public class Interaction {
-    Store onlineStore = new Store();
+    Store onlineStore = Store.getInstance();
     ProductComparator productComparator = new ProductComparator(onlineStore);
 
     public void Interactive() {

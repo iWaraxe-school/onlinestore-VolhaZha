@@ -8,7 +8,7 @@ import java.util.List;
 public class Store {
     private static List<Category> categoryList = new ArrayList<>();
 
-    public static void fillStore(Category category) {
+    public void fillStore(Category category) {
         categoryList.add(category);
     }
 
@@ -25,5 +25,14 @@ public class Store {
             listOfAllProducts.addAll(productList);
         }
         return listOfAllProducts;
+    }
+
+    private Store() {
+    }
+    private static class SingletonHolder {
+        private final static Store instance = new Store ();
+    }
+    public static Store getInstance() {
+        return SingletonHolder.instance;
     }
 }

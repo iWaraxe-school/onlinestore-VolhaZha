@@ -1,5 +1,7 @@
 package console.app;
 
+import domain.Product;
+import domain.ProductBuilder;
 import fakers.RandomStorePopulator;
 import store.Store;
 import xml.ProductComparator;
@@ -7,7 +9,7 @@ import interaction.Interaction;
 
 public class StoreApp {
     public static void main(String[] args) {
-        Store onlineStore = new Store();
+        Store onlineStore = Store.getInstance();
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
         randomStorePopulator.fillStoreRandomly();
         onlineStore.printAllCategoriesAndProducts();
