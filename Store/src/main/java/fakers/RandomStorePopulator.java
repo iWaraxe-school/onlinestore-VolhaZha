@@ -1,18 +1,18 @@
 package fakers;
 
+import domain.Categories.BookCategory;
+import domain.Categories.FoodCategory;
+import domain.Categories.PetsCategory;
 import domain.Category;
 import domain.Product;
 import domain.ProductBuilder;
-import org.reflections.Reflections;
 import store.Store;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
-
-import static org.reflections.scanners.Scanners.SubTypes;
 
 public class RandomStorePopulator {
     Store store;
@@ -21,26 +21,28 @@ public class RandomStorePopulator {
         this.store = store;
     }
 
-    public void fillStoreRandomly() {
-        Reflections reflections = new Reflections("domain.Categories");
-        Set<Class<?>> subTypes =
-                reflections.get(SubTypes.of(Category.class).asClass());
+    public Category fillStoreRandomly() {
+
         Set<Category> subCategorySet = new HashSet<>();
         RandomProductGenerator products = new RandomProductGenerator();
-        for (Class<?> type : subTypes){
+
+        final String BOOK_NAME = "Book";
+        final String FOOD_NAME = "Food";
+        final String PETS_NAME = "Pets";
+
+        String simpleName = null;
+
+        for (Category type : subCategorySet){
             Category category = null;
-            try {
-                category = (Category) type.getConstructor().newInstance();
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            }
-            subCategorySet.add(category);
+                if (Objects.equals(simpleName, BOOK_NAME)) {
+                    return new BookCategory();
+                } else if (Objects.equals(simpleName, FOOD_NAME)) {
+                    return new FoodCategory();
+                } else if (Objects.equals(simpleName, PETS_NAME)) {
+                    return new PetsCategory();
+                } else {
+                    return null;
+                }
         }
 
         for (Category subCategory : subCategorySet) {
@@ -55,6 +57,6 @@ public class RandomStorePopulator {
             }
             store.fillStore(subCategory);
         }
-
+        return null;
     }
 }
