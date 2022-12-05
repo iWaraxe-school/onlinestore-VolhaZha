@@ -1,7 +1,6 @@
-package fakers;
+package helpers;
 
 import com.github.javafaker.Faker;
-import domain.Product;
 
 public class RandomProductGenerator {
     private final Faker faker = new Faker();

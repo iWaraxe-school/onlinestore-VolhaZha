@@ -1,8 +1,6 @@
 package console.app;
 
-import domain.Product;
-import domain.ProductBuilder;
-import fakers.RandomStorePopulator;
+import helpers.RandomStorePopulator;
 import store.Store;
 import xml.ProductComparator;
 import interaction.Interaction;
