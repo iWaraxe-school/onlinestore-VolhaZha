@@ -1,6 +1,7 @@
 package console.app;
 
 import helpers.RandomStorePopulator;
+import multithreading.ClearOrders;
 import store.Store;
 import xml.ProductComparator;
 import interaction.Interaction;
@@ -15,6 +16,8 @@ public class StoreApp {
         ProductComparator productComparator = new ProductComparator(onlineStore);
         productComparator.sortProducts();
         productComparator.top5();
+
+        new ClearOrders().start();
 
         Interaction interaction = new Interaction();
         interaction.Interactive();

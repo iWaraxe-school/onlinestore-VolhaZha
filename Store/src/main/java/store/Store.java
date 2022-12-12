@@ -2,8 +2,12 @@ package store;
 
 import domain.Category;
 import domain.Product;
+import domain.ProductBuilder;
+import helpers.RandomProductGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Store {
     private static List<Category> categoryList = new ArrayList<>();
@@ -34,5 +38,15 @@ public class Store {
     }
     public static Store getInstance() {
         return SingletonHolder.instance;
+    }
+
+    public Product getRandomProductFromStore () {
+        RandomProductGenerator products = new RandomProductGenerator();
+        Product product = new ProductBuilder()
+                .name(products.generateProductName("Book"))
+                .price(products.generateProductPrice())
+                .rate(products.generateProductRate())
+                .build();
+        return product;
     }
 }
