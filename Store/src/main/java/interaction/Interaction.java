@@ -1,5 +1,6 @@
 package interaction;
 
+import multithreading.CreateOrders;
 import store.Store;
 import xml.ProductComparator;
 
@@ -10,23 +11,34 @@ public class Interaction {
     ProductComparator productComparator = new ProductComparator(onlineStore);
 
     public void Interactive() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("-----------------------------");
-        System.out.print("Enter sort, top or quit: ");
-        String data = in.nextLine();
+        try {
+            boolean flag = true;
+            while (flag) {
+                Scanner in = new Scanner(System.in);
+                System.out.println("-----------------------------");
+                System.out.print("Enter sort, top, order or quit: ");
+                String data = in.nextLine();
 
-        switch (data) {
-            case "top":
-                productComparator.top5();
-                break;
-            case "sort":
-                productComparator.sortProducts();
-                break;
-            case "quit":
-                System.out.println("Exit.");
-                System.exit(0);
-            default:
-                System.out.println("Try again.");
-    }
+                switch (data) {
+                    case "top":
+                        productComparator.top5();
+                        break;
+                    case "sort":
+                        productComparator.sortProducts();
+                        break;
+                    case "order":
+                        new CreateOrders().start();
+                        break;
+                    case "quit":
+                        flag = false;
+                        System.out.println("Exit.");
+                        System.exit(0);
+                    default:
+                        System.out.println("Try again.");
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
     }
 }
