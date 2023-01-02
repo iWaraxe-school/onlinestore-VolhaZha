@@ -28,4 +28,13 @@ public class Product {
       String productInfo = String.format("Product - Name: '%s', Price: %s, Rate: %s", name, price, rate);
       return productInfo;
    }
+
+   public void setName(String string) {
+   }
+
+   public void setPrice(double aDouble) {
+   }
+
+   public void setRate(double aDouble) {
+   }
 }
