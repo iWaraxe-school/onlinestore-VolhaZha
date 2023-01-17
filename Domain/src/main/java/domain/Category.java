@@ -30,4 +30,9 @@ public abstract class Category {
             System.out.println(product);
         }
     }
+
+    @Override
+    public String toString() {
+        return '\n' + "Category: " + name + '\n';
+    }
 }
