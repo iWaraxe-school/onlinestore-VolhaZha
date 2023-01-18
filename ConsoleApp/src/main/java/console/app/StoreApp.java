@@ -1,16 +1,18 @@
 package console.app;
 
-import helpers.DbHandler;
 import helpers.RandomStorePopulator;
+import http.HttpClient;
+import http.Server;
 import multithreading.ClearOrders;
 import store.Store;
 import xml.ProductComparator;
 import interaction.Interaction;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class StoreApp {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
         Store onlineStore = Store.getInstance();
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
         randomStorePopulator.fillStoreRandomly();
@@ -20,13 +22,8 @@ public class StoreApp {
         productComparator.sortProducts();
         productComparator.top5();
 
-        DbHandler dbHandler = new DbHandler(onlineStore);
-        dbHandler.getDbConnection();
-        dbHandler.clearDb();
-        dbHandler.createCategoryTable();
-        dbHandler.createProductsTable();
-        dbHandler.fillStoreRandomly();
-        dbHandler.printFilledStore();
+        Server.serverCreate();
+        HttpClient.clientOrder();
 
         new ClearOrders().start();
 
